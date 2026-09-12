@@ -1,0 +1,541 @@
+/* =========================================================
+   Veridial Mobile — design tokens
+   ========================================================= */
+:root {
+  --primary: #4a5ff0;
+  --primary-pressed: #3a4ad1;
+  --primary-tint: #eef0fe;
+
+  --bg: #f5f6fb;
+  --surface: #ffffff;
+  --field-fill: #f1f2f9;
+
+  --ink: #14162b;
+  --ink-secondary: #6b7280;
+  --ink-muted: #9ca3b5;
+
+  --line: #e5e8f2;
+  --line-strong: #c7cce3;
+
+  --error: #e5484d;
+  --error-bg: #fdeced;
+
+  --font: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  --tap-min: 48px;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #dadfef;
+  font-family: var(--font);
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   Device frame — presentation only, so the screen previews
+   like a real Android phone. The screen itself is the deliverable.
+   ========================================================= */
+.device-frame {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 12px;
+}
+
+.screen {
+  width: 100%;
+  max-width: 402px;
+  min-width: 360px;
+  min-height: 780px;
+  background: var(--bg);
+  border-radius: 34px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 8px #101223,
+    0 40px 70px -30px rgba(16, 18, 35, 0.55);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 430px) {
+  .device-frame {
+    padding: 0;
+  }
+  .screen {
+    border-radius: 0;
+    min-height: 100vh;
+    box-shadow: none;
+  }
+}
+
+/* ---------- mock status bar ---------- */
+.status-bar {
+  height: 40px;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.status-bar__time {
+  font-size: 13px;
+  font-weight: 600;
+}
+.status-bar__icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- state preview strip ---------- */
+.state-demo {
+  display: flex;
+  gap: 6px;
+  padding: 6px 16px 10px;
+  overflow-x: auto;
+  flex-shrink: 0;
+  scrollbar-width: none;
+}
+
+.state-demo::-webkit-scrollbar {
+  display: none;
+}
+
+.state-chip {
+  flex-shrink: 0;
+  font-family: var(--font);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.state-chip.is-active {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* =========================================================
+   Content
+   ========================================================= */
+.content {
+  flex: 1;
+  padding: 8px 24px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.brand__mark {
+  box-shadow: 0 14px 28px -12px rgba(74, 95, 240, 0.55);
+  border-radius: 16px;
+}
+
+.brand__name {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.headline {
+  text-align: center;
+  margin: 22px 0 28px;
+}
+
+.headline h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.headline p {
+  font-size: 14px;
+  color: var(--ink-secondary);
+  margin: 0;
+}
+
+/* =========================================================
+   Form
+   ========================================================= */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  padding-left: 2px;
+}
+
+.field__control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--field-fill);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 0 14px;
+  height: 52px;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.field__icon {
+  color: var(--ink-muted);
+  flex-shrink: 0;
+}
+
+.field__control input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font);
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.field__control input::placeholder {
+  color: var(--ink-muted);
+}
+.field__control input:focus {
+  outline: none;
+}
+
+.field__control:hover {
+  border-color: var(--line-strong);
+}
+
+.field__control:focus-within {
+  background: var(--surface);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-tint);
+}
+
+.field__control:focus-within .field__icon {
+  color: var(--primary);
+}
+
+.field__action {
+  flex-shrink: 0;
+  width: var(--tap-min);
+  height: var(--tap-min);
+  margin-right: -14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+
+.field__error {
+  display: none;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--error);
+  margin: 1px 0 0 2px;
+}
+
+/* --- error state: .field.has-error --- */
+.field.has-error .field__control {
+  background: var(--error-bg);
+  border-color: var(--error);
+}
+
+.field.has-error .field__icon {
+  color: var(--error);
+}
+.field.has-error .field__error {
+  display: flex;
+}
+
+/* --- focused (forced demo state): .field.is-focused --- */
+.field.is-focused .field__control {
+  background: var(--surface);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-tint);
+}
+
+.field.is-focused .field__icon {
+  color: var(--primary);
+}
+
+/* =========================================================
+   Row: remember me / forgot password
+   ========================================================= */
+.auth-form__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--tap-min);
+  margin: -2px 0;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  min-height: var(--tap-min);
+}
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox__box {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1.6px solid var(--line-strong);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.checkbox input:checked + .checkbox__box {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkbox input:checked + .checkbox__box svg {
+  display: block;
+}
+.checkbox__box svg {
+  display: none;
+}
+
+.checkbox input:focus-visible + .checkbox__box {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.link-muted {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  padding: 8px 2px;
+}
+
+.link-accent {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+.btn {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 54px;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 14px 24px -12px rgba(74, 95, 240, 0.6);
+  margin-top: 4px;
+}
+
+.btn--primary:active {
+  background: var(--primary-pressed);
+}
+
+.btn--primary:disabled,
+.btn--primary.is-disabled {
+  background: #c6cbe8;
+  color: #fff;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn__spinner {
+  display: none;
+}
+
+.btn--primary.is-loading {
+  color: transparent;
+  pointer-events: none;
+}
+.btn--primary.is-loading .btn__label {
+  opacity: 0;
+}
+
+.btn--primary.is-loading .btn__spinner {
+  display: block;
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  border: 2.4px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn--google {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.btn--google:active {
+  background: var(--field-fill);
+}
+
+/* ripple, added via TS on pointerdown */
+.btn__ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(0);
+  animation: ripple 0.55s ease-out forwards;
+  pointer-events: none;
+}
+
+.btn--google .btn__ripple {
+  background: rgba(74, 95, 240, 0.14);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink-muted);
+  font-size: 12px;
+  font-weight: 600;
+  margin: 2px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.footer-text {
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--ink-secondary);
+  margin: 24px 0 0;
+}
+
+/* =========================================================
+   Disabled demo — applied to .screen.demo-disabled
+   ========================================================= */
+.screen.demo-disabled .auth-form input,
+.screen.demo-disabled .checkbox,
+.screen.demo-disabled .link-muted,
+.screen.demo-disabled .btn--google {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.screen.demo-disabled .btn--primary {
+  background: #c6cbe8;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn__spinner,
+  .btn__ripple {
+    animation: none !important;
+  }
+}
